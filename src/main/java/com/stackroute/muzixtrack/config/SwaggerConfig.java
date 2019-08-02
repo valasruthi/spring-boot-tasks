@@ -15,8 +15,8 @@ public class SwaggerConfig
   @Bean
   public Docket api() {
     return new Docket(DocumentationType.SWAGGER_2)
-      .select()
-      .apis(RequestHandlerSelectors.any())
+      .select()//it will return an instance of Api selectorBuilder,which provides a way to control exposed by swagger
+      .apis(RequestHandlerSelectors.any())//any() for both will make documentation for entire API available through swagger
       .paths(PathSelectors.any())
       .build();
   }
