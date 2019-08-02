@@ -6,8 +6,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class MuzixTrackApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(MuzixTrackApplication.class, args);
-	}
+  public static void main(String[] args) {
+
+    SpringApplication.run(MuzixTrackApplication.class, args);
+  }
 
 }
