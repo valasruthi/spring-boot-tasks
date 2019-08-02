@@ -70,10 +70,10 @@ public class TrackServiceImpl implements TrackService {
 
   @Override
   //update a particular  part of a track by its id
-  public Track updateTrack(int id)throws TrackNotFoundException {
+  public Track updateTrack(int id,Track track)throws TrackNotFoundException {
 //        delete the track
     if(trackRepository.existsById(id)){
-      Track updateTrackById=trackRepository.findById(id).get();
+      Track updateTrackById = trackRepository.save(track);
       return updateTrackById;
     }
     else{

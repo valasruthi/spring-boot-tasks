@@ -82,11 +82,11 @@ public class TrackController {
 
   @PutMapping("track/{id}")
   //to update the track
-  public ResponseEntity<?> updateTrackById(@PathVariable int id) throws TrackNotFoundException {
+  public ResponseEntity<?> updateTrackById(@PathVariable int id,@RequestBody Track track) throws TrackNotFoundException {
     ResponseEntity responseEntity;
     try {
-      Track trackUpdated = trackService.getById(id);
-      responseEntity = new ResponseEntity<>(trackUpdated, HttpStatus.CREATED);
+      Track trackUpdated = trackService.updateTrack(id,track);
+      responseEntity = new ResponseEntity<>(trackUpdated, HttpStatus.UPGRADE_REQUIRED);
     } catch (TrackNotFoundException ex) {
       responseEntity = new ResponseEntity(ex.getMessage(), HttpStatus.NOT_FOUND);
       ex.printStackTrace();
