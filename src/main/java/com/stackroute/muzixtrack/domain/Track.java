@@ -8,56 +8,27 @@ import lombok.NoArgsConstructor;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
+// Entity defines that a class can be mapped to a table
 @Entity
+
+/*  Data bundles the features of @ToString, @EqualsAndHashCode, @Getter / @Setter
+    and @RequiredArgsConstructor together*/
 @Data
+
+// It generates constructor with no parameters
 @NoArgsConstructor
+
+// It generates a constructor with 1 parameter for each field
 @AllArgsConstructor
+
+/*  It produces complex builder APIs for class
+    It automatically produce the code required to have your class be instantiable with code
+ */
 @Builder
 public class Track {
+  //    declaration of variables
   @Id
   private int id;
   private String name;
-  private String comments;
-
-  public Track() {
-  }
-
-  public Track(int id, String name, String comments) {
-    this.id = id;
-    this.name = name;
-    this.comments = comments;
-  }
-
-  public int getId() {
-    return id;
-  }
-
-  public void setId(int id) {
-    this.id = id;
-  }
-
-  public String getName() {
-    return name;
-  }
-
-  public void setName(String name) {
-    this.name = name;
-  }
-
-  public String getComments() {
-    return comments;
-  }
-
-  public void setComments(String comments) {
-    this.comments = comments;
-  }
-
-  @Override
-  public String toString() {
-    return "Track{" +
-      "id=" + id +
-      ", name='" + name + '\'' +
-      ", comments='" + comments + '\'' +
-      '}';
-  }
+  private String comment;
 }
