@@ -1,3 +1,4 @@
+/*
 package com.stackroute.muzixtrack.seeddata;
 
 
@@ -42,3 +43,4 @@ public class ApplicationRunnerImpl implements ApplicationListener {
 }
 
 
+*/

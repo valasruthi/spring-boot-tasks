@@ -69,7 +69,7 @@ public class TrackController {
   public ResponseEntity<?> getTrackByName(@PathVariable String name) throws Exception {
     ResponseEntity responseEntity;
     System.out.println(name);
-      List<Track> trackDetails = trackService.trackByName(name);
+      List<Track> trackDetails = trackService.findByName(name);
       return new ResponseEntity<>(trackDetails, HttpStatus.OK);
     }
 }

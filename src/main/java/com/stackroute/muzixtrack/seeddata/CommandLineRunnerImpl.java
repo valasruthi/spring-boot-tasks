@@ -1,3 +1,4 @@
+/*
 package com.stackroute.muzixtrack.seeddata;
 
 
@@ -40,3 +41,4 @@ public class CommandLineRunnerImpl implements CommandLineRunner {
   }
 
 }
+*/
