@@ -84,7 +84,7 @@ public class TrackServiceImpl implements TrackService {
       throw new TrackNotFoundException("track not found");
     }
   }
-
+@Profile("dev")
   //get the track by name
   @Override
   public List<Track> trackByName(String name)throws Exception {
