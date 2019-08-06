@@ -19,18 +19,18 @@
   </properties>
 
   <dependencies>
-   <!-- <dependency>
-      <groupId>com.h2database</groupId>
-      <artifactId>h2</artifactId>
-      <version>1.4.197</version>
+    <!-- <dependency>
+       <groupId>com.h2database</groupId>
+       <artifactId>h2</artifactId>
+       <version>1.4.197</version>
 
-    </dependency>-->
-   <!-- <dependency>
-      <groupId>mysql</groupId>
-      <artifactId>mysql-connector-java</artifactId>
-      <version>8.0.17</version>
-    </dependency>
--->
+     </dependency>-->
+    <!-- <dependency>
+       <groupId>mysql</groupId>
+       <artifactId>mysql-connector-java</artifactId>
+       <version>8.0.17</version>
+     </dependency>
+ -->
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-data-mongodb</artifactId>
@@ -43,15 +43,32 @@
     </dependency>
 
     <!-- https://mvnrepository.com/artifact/org.springframework.data/spring-data-jpa -->
-   <!-- <dependency>
-      <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-starter-data-jpa</artifactId>
-      <version>1.0.0.RELEASE</version>
+    <!-- <dependency>
+       <groupId>org.springframework.boot</groupId>
+       <artifactId>spring-boot-starter-data-jpa</artifactId>
+       <version>1.0.0.RELEASE</version>
+     </dependency>
+ -->
+    <dependency>
+      <groupId>org.javassist</groupId>
+      <artifactId>javassist</artifactId>
+      <version>3.23.1-GA</version>
     </dependency>
--->
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-test</artifactId>
+      <scope>test</scope>
+      <exclusions>
+        <exclusion>
+          <groupId>org.mockito</groupId>
+          <artifactId>mockito-core</artifactId>
+        </exclusion>
+      </exclusions>
+    </dependency>
+    <dependency>
+      <groupId>org.mockito</groupId>
+      <artifactId>mockito-core</artifactId>
+      <version>2.23.4</version>
       <scope>test</scope>
     </dependency>
     <dependency>

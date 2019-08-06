@@ -14,7 +14,8 @@ public class GlobalException {
 
   @ExceptionHandler(TrackAlreadyExistsException.class)
   public ResponseEntity<?> alreadyExistException(final TrackAlreadyExistsException e) {
-    return new ResponseEntity<String>(e.getMessage(), HttpStatus.NOT_ACCEPTABLE);
+    return new ResponseEntity<String>(e.getMessage(), HttpStatus.CONFLICT);
   }
+
 
 }
