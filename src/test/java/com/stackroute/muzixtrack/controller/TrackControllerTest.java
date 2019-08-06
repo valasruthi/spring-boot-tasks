@@ -28,16 +28,19 @@ import java.util.List;
 
 import static org.mockito.ArgumentMatchers.*;
 import static org.mockito.Mockito.when;
-
+// It is used to provide a bridge between Spring Boot test features and JUnit.
 @RunWith(SpringRunner.class)
+//Annotation that can be used in combination with @RunWith(SpringRunner.class) for a typical Spring MVC test. Can be used when a test focuses only on Spring MVC components.
 @WebMvcTest
 public class TrackControllerTest {
 
   @Autowired
   private MockMvc mockMvc;
   private Track track;
+//Annotation that can be used to add mocks to a Spring ApplicationContext. Can be used as a class level annotation or on fields in either @Configuration classes, or test classes that are @RunWith the SpringRunner.
   @MockBean
   private TrackService trackService;
+  //@InjectMock creates an instance of the class and injects the mocks that are marked with the annotations @Mock into it.
   @InjectMocks
   private TrackController trackController;
 
@@ -57,9 +60,9 @@ public class TrackControllerTest {
 
     list.add(track);
   }
-
+//it is used for saving the track
   @Test
-  public void saveUser() throws Exception {
+  public void saveTrack() throws Exception {
     when(trackService.save(any())).thenReturn(track);
     mockMvc.perform(MockMvcRequestBuilders.post("/api/v1/track")
       .contentType(MediaType.APPLICATION_JSON).content(asJsonString(track)))

@@ -72,10 +72,7 @@ public class TrackServiceTest {
     when(trackRepository.save(any())).thenReturn(null);
     Track savedTrack = trackService.save(track);
     System.out.println("savedTrack" + savedTrack);
-    //Assert.assertEquals(user,savedUser);
 
-       /*doThrow(new UserAlreadyExistException()).when(userRepository).findById(eq(101));
-       userService.saveUser(user);*/
   }
   @Test
   public void getTrackById() throws TrackNotFoundException {
