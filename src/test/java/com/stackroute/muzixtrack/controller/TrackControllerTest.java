@@ -112,12 +112,13 @@ public class TrackControllerTest {
   }
   @Test
   public void givenInputShouldUpdateTrack() throws Exception{
-   when(trackService.updateTrack(anyInt(),track)).thenReturn(track);
-    mockMvc.perform(MockMvcRequestBuilders.get("/api/v1/track/10")
+   when(trackService.updateTrack(10,track)).thenReturn(track);
+    mockMvc.perform(MockMvcRequestBuilders.get("/api/v1/tracks/10")
      .contentType(MediaType.APPLICATION_JSON).content(asJsonString(track)))
-      .andExpect(MockMvcResultMatchers.status().isUpgradeRequired())
+      .andExpect(MockMvcResultMatchers.status().isOk())
       .andDo(MockMvcResultHandlers.print());
  }
+
   private static String asJsonString(final Object obj)
   {
     try{

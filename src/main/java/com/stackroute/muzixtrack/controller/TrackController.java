@@ -56,12 +56,12 @@ public class TrackController {
       Track tracksList = (Track) trackService.deleteTrackById(id);
       return new ResponseEntity<>(tracksList, HttpStatus.CONFLICT);
     }
-    @PutMapping("track/{id}")
+    @PutMapping("tracks/{id}")
   //to update the track
   public ResponseEntity<?> updateTrackById(@PathVariable int id,@RequestBody Track track) throws TrackNotFoundException {
     ResponseEntity responseEntity;
       Track trackUpdated = trackService.updateTrack(id,track);
-      return new ResponseEntity<>(trackUpdated, HttpStatus.UPGRADE_REQUIRED);
+      return new ResponseEntity<>(trackUpdated, HttpStatus.OK);
     }
 
   @GetMapping("tracks/{name}")
