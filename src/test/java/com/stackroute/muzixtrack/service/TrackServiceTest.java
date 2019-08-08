@@ -75,7 +75,7 @@ public class TrackServiceTest {
 
   }
   @Test
-  public void getTrackById() throws TrackNotFoundException {
+  public void givenIdShouldReturnTrack() throws TrackNotFoundException {
     trackRepository.save(track);
     //stubbing the mock to return specific data
     when(trackRepository.existsById(10)).thenReturn(true);
@@ -84,14 +84,14 @@ public class TrackServiceTest {
     Assert.assertEquals(track, gettrack);
   }
   @Test
-  public void getTrackByName() throws Exception{
+  public void givenNameShouldReturnTrack() throws Exception{
     trackRepository.save(track);
     when(trackRepository.findByName(any())).thenReturn(list);
     List<Track> tracks=trackService.findByName("sruthi");
     Assert.assertEquals(list,tracks);
   }
   @Test
-  public void deleteById() throws TrackNotFoundException{
+  public void givenIdShouldReturnDeletedTrack() throws TrackNotFoundException{
     trackRepository.save(track);
     when(trackRepository.existsById(10)).thenReturn(true);
     when(trackRepository.findById(10)).thenReturn(track);
@@ -99,7 +99,7 @@ public class TrackServiceTest {
     Assert.assertEquals(track,deleteTrack);
   }
 @Test
-  public void updateTrack() throws TrackNotFoundException{
+  public void givenIdShouldUpdateTrack() throws TrackNotFoundException{
     trackRepository.save(track);
     when(trackRepository.existsById(10)).thenReturn(true);
     when(trackRepository.save(track)).thenReturn(track);
