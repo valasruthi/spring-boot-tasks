@@ -42,7 +42,6 @@ public class TrackController {
   //to get the track by id
   public ResponseEntity<?> getTrackById(@PathVariable int id) throws TrackNotFoundException {
     ResponseEntity responseEntity;
-    System.out.println(id);
     try {
       Track trackDetails = trackService.getById(id);
       return new ResponseEntity<>(trackDetails, HttpStatus.CREATED);
@@ -98,7 +97,6 @@ public class TrackController {
   //to get the track by name
   public ResponseEntity<?> getTrackByName(@PathVariable String name) throws Exception {
     ResponseEntity responseEntity;
-    System.out.println(name);
     try {
       List<Track> trackDetails = trackService.trackByName(name);
       responseEntity = new ResponseEntity<>(trackDetails, HttpStatus.OK);
