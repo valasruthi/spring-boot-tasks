@@ -33,7 +33,6 @@ public class TrackController {
   @GetMapping("track/{id}")
   //to get the track by id
   public ResponseEntity<?> getTrackById(@PathVariable int id) {
-    System.out.println(id);
     Track trackDetails = trackService.getById(id);
     return new ResponseEntity<>(trackDetails, HttpStatus.OK);
   }
@@ -61,7 +60,6 @@ public class TrackController {
   @GetMapping("tracks/{name}")
   //to get the track by name
   public ResponseEntity<?> getTrackByName(@PathVariable String name) {
-    System.out.println(name);
     List<Track> trackDetails = trackService.trackByName(name);
     return new ResponseEntity<>(trackDetails, HttpStatus.OK);
   }
