@@ -46,6 +46,7 @@ public class TrackServiceTest {
 
   @After
   public void tearDown() throws Exception {
+   track=null;
   }
 
   @Test
