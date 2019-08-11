@@ -21,7 +21,7 @@ import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
 
 public class TrackServiceTest {
-  Track track;
+ private Track track;
 
   //Create a mock for UserRepository
   @Mock
