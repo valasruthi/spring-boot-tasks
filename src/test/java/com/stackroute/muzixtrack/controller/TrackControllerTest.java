@@ -60,6 +60,11 @@ public class TrackControllerTest {
 
     list.add(track);
   }
+ @After
+  public void tearDown() throws Exception {
+   track=null;
+  }
+  
 //it is used for saving the track
   @Test
   public void saveTrack() throws Exception {
