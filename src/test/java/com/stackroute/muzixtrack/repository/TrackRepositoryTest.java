@@ -64,4 +64,22 @@ public class TrackRepositoryTest {
     Track fetchTrack = trackRepository.findById(track.getId());
     Assert.assertNotSame(40, fetchTrack.getId());
   }
+  @Test
+  public void givenIdShouldDeleteTrack(){
+    trackRepository.save(track);
+    TRack deleteTrack=tra
+}
+  @Test
+  public void givenIdShouldDeleteTrack(){
+    trackRepository.save(track);
+    Track deleteTrack=trackRepository.delete(track.getId());
+    Assert.assertEquals(62,deleteTrack.getId());
+  }
+  @Test
+  public void givenIdShouldUpdateTrack(){
+    trackRepository.save(track);
+    Track updateTrack=trackRepository.update(track);
+    Assert.assertEquals(62,updateTrack.getId());
+    
+  }
 }
