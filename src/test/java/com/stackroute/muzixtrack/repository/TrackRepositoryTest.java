@@ -39,7 +39,7 @@ public class TrackRepositoryTest {
 
   @After
   public void tearDown() throws Exception {
-    trackRepository.deleteAll();
+    track=null;
   }
 
   @Test
