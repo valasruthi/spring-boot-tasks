@@ -14,4 +14,8 @@ public interface TrackRepository extends MongoRepository<Track, Integer> {
   public List<Track> findByName(String name);
 
   public Track findById(int id);
+  
+   public  Track delete(int id);
+
+  public Track update(Track track);
 }
