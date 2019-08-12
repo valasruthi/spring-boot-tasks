@@ -25,12 +25,12 @@ public class TrackServiceTest {
 
   //Create a mock for UserRepository
   @Mock
-  TrackRepository trackRepository;
+  private TrackRepository trackRepository;
 
   //Inject the mocks as dependencies into UserServiceImpl
   @InjectMocks
-  TrackServiceImpl trackService;
-  List<Track> list = null;
+  private TrackServiceImpl trackService;
+  private List<Track> list = null;
 
   @Before
   public void setUp() throws Exception {
@@ -113,5 +113,15 @@ public class TrackServiceTest {
     Assert.assertEquals(track,updateTrack);
    verify(trackRepository, Mockito.times(1)).save(track);
 }
+ @Test(expected = TrackNotFoundException.class)
+    public void givenIdShouldReturnNegativeTrack() throws TrackNotFoundException {
+    trackRepository.save(track);
+    //stubbing the mock to return specific data
+    when(trackRepository.findById(10)).thenReturn(track);
+    Track gettrack = trackService.getById(10);
+    Assert.assertEquals(track, gettrack);
+   verify(trackRepository, Mockito.times(1)).findById(track);
+  }
+ 
 }
 
