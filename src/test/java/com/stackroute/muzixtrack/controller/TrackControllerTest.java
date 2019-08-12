@@ -56,6 +56,11 @@ public class TrackControllerTest {
     track.setName("sruthi");
     track.setId(10);
     track.setComment("good");
+    
+    track1 = new Track();
+    track1.setName("chinni");
+    track1.setId(-10);
+    track1.setComment("good");
     list = new ArrayList();
 
     list.add(track);
@@ -120,12 +125,21 @@ public class TrackControllerTest {
   }
   @Test
   public void givenInputShouldUpdateTrack() throws Exception{
-   when(trackService.updateTrack(10,track)).thenReturn(track);
+   when(trackService.updateTrack(track)).thenReturn(track);
     mockMvc.perform(MockMvcRequestBuilders.get("/api/v1/tracks/10")
      .contentType(MediaType.APPLICATION_JSON).content(asJsonString(track)))
       .andExpect(MockMvcResultMatchers.status().isOk())
       .andDo(MockMvcResultHandlers.print());
  }
+  
+  @Test
+  public void givenIdShouldGetNegativeTrack() throws Exception{
+    when(trackService.getById(anyInt())).thenReturn(track);
+    mockMvc.perform(MockMvcRequestBuilders.get("/api/v1/track/-10")
+      .contentType(MediaType.APPLICATION_JSON).content(asJsonString(track)))
+      .andExpect(MockMvcResultMatchers.status().isOk())
+      .andDo(MockMvcResultHandlers.print());
+  }
 
   private static String asJsonString(final Object obj)
   {
