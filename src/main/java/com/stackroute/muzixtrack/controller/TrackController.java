@@ -53,7 +53,7 @@ public class TrackController {
   public ResponseEntity<?> deleteTrackById(@PathVariable("id") int id) throws TrackNotFoundException {
     ResponseEntity responseEntity;
       Track tracksList = (Track) trackService.deleteTrackById(id);
-      return new ResponseEntity<>(tracksList, HttpStatus.isConflict);
+      return new ResponseEntity<>(tracksList, HttpStatus.CONFLICT);
     }
     @PutMapping("track/{id}")
   //to update the track
