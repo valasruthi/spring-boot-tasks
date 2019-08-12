@@ -27,7 +27,7 @@ public class TrackController {
   //to post the track
   public ResponseEntity<?> saveTrack(@RequestBody Track track) {
     Track savedTrack = trackService.save(track);
-    return new ResponseEntity<>(savedTrack, HttpStatus.OK);
+    return new ResponseEntity<>(savedTrack, HttpStatus.CREATED);
   }
 
   @GetMapping("track/{id}")
@@ -47,14 +47,14 @@ public class TrackController {
   //to delete the track
   public ResponseEntity<?> deleteTrackById(@PathVariable("id") int id) {
     Optional<Track> tracksList = (Optional<Track>) trackService.deleteTrackById(id);
-    return new ResponseEntity<>(tracksList, HttpStatus.OK);
+    return new ResponseEntity<>(tracksList, HttpStatus.CONFLICT);
   }
 
-  @PatchMapping("track/{id}")
+  @PutMapping("track/{id}")
   //to update the track
   public ResponseEntity<?> updateTrackById(@PathVariable int id, @RequestBody Track track) {
     Track trackUpdated = trackService.updateTrack(id, track);
-    return new ResponseEntity<>(trackUpdated, HttpStatus.ACCEPTED);
+    return new ResponseEntity<>(trackUpdated, HttpStatus.OK);
   }
 
   @GetMapping("tracks/{name}")
