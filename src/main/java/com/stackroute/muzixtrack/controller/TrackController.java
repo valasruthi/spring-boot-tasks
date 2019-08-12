@@ -31,7 +31,7 @@ public class TrackController {
     ResponseEntity responseEntity;
     try {
       Track savedTrack = trackService.save(track);
-      return new ResponseEntity<>(savedTrack, HttpStatus.isCreated);
+      return new ResponseEntity<>(savedTrack, HttpStatus.CREATED);
     } catch (TrackAlreadyExistsException ex) {
       responseEntity = new ResponseEntity<String>(ex.getMessage(), HttpStatus.CONFLICT);
       return responseEntity;
@@ -72,7 +72,7 @@ public class TrackController {
     ResponseEntity responseEntity;
     try {
       Track tracksList = (Track) trackService.deleteTrackById(id);
-      return new ResponseEntity<>(tracksList, HttpStatus.isConflict);
+      return new ResponseEntity<>(tracksList, HttpStatus.CONFLICT);
     } catch (TrackNotFoundException ex) {
       responseEntity = new ResponseEntity(ex.getMessage(), HttpStatus.NOT_FOUND);
     }
