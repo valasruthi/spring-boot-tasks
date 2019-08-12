@@ -30,7 +30,7 @@ public class TrackController {
   public ResponseEntity<?> saveTrack(@RequestBody Track track) throws TrackAlreadyExistsException {
     ResponseEntity responseEntity;
       Track savedTrack = trackService.save(track);
-      return new ResponseEntity<>(savedTrack, HttpStatus.OK);
+      return new ResponseEntity<>(savedTrack, HttpStatus.isCreated);
     }
 
   @GetMapping("track/{id}")
@@ -38,7 +38,7 @@ public class TrackController {
   public ResponseEntity<?> getTrackById(@PathVariable int id) throws TrackNotFoundException {
     ResponseEntity responseEntity;
       Track trackDetails = trackService.getById(id);
-      return new ResponseEntity<>(trackDetails, HttpStatus.CREATED);
+      return new ResponseEntity<>(trackDetails, HttpStatus.OK);
     }
   @GetMapping("tracks")
   //to get the List of track
@@ -53,14 +53,14 @@ public class TrackController {
   public ResponseEntity<?> deleteTrackById(@PathVariable("id") int id) throws TrackNotFoundException {
     ResponseEntity responseEntity;
       Track tracksList = (Track) trackService.deleteTrackById(id);
-      return new ResponseEntity<>(tracksList, HttpStatus.OK);
+      return new ResponseEntity<>(tracksList, HttpStatus.isConflict);
     }
     @PutMapping("track/{id}")
   //to update the track
   public ResponseEntity<?> updateTrackById(@PathVariable int id,@RequestBody Track track) throws TrackNotFoundException {
     ResponseEntity responseEntity;
       Track trackUpdated = trackService.updateTrack(id,track);
-      return new ResponseEntity<>(trackUpdated, HttpStatus.UPGRADE_REQUIRED);
+      return new ResponseEntity<>(trackUpdated, HttpStatus.OK);
     }
 
   @GetMapping("tracks/{name}")
