@@ -66,6 +66,7 @@ public class TrackServiceTest {
     when(trackRepository.findAll()).thenReturn(list);
     List<Track> trackList = trackService.getAllTracks();
     Assert.assertEquals(list, trackList);
+   verify(trackRepository, Mockito.times(1)).findAll(track);
   }
 
   @Test(expected = TrackAlreadyExistsException.class)
@@ -73,6 +74,7 @@ public class TrackServiceTest {
     when(trackRepository.save(any())).thenReturn(null);
     Track savedTrack = trackService.save(track);
     System.out.println("savedTrack" + savedTrack);
+   verify(trackRepository, Mockito.times(0)).save(track);
 
   }
   @Test
@@ -83,6 +85,7 @@ public class TrackServiceTest {
     when(trackRepository.findById(10)).thenReturn(track);
     Track gettrack = trackService.getById(10);
     Assert.assertEquals(track, gettrack);
+   verify(trackRepository, Mockito.times(1)).findById(track);
   }
   @Test
   public void givenNameShouldReturnTrack() throws Exception{
@@ -90,6 +93,7 @@ public class TrackServiceTest {
     when(trackRepository.findByName(any())).thenReturn(list);
     List<Track> tracks=trackService.findByName("sruthi");
     Assert.assertEquals(list,tracks);
+   verify(trackRepository, Mockito.times(1)).findByName(track);
   }
   @Test
   public void givenIdShouldReturnDeletedTrack() throws TrackNotFoundException{
@@ -98,6 +102,7 @@ public class TrackServiceTest {
     when(trackRepository.findById(10)).thenReturn(track);
     Track deleteTrack=trackService.deleteTrackById(10);
     Assert.assertEquals(track,deleteTrack);
+   verify(trackRepository, Mockito.times(1)).findById(track);
   }
 @Test
   public void givenIdShouldUpdateTrack() throws TrackNotFoundException{
@@ -106,6 +111,7 @@ public class TrackServiceTest {
     when(trackRepository.save(track)).thenReturn(track);
     Track updateTrack=trackService.updateTrack(10,track);
     Assert.assertEquals(track,updateTrack);
+   verify(trackRepository, Mockito.times(1)).save(track);
 }
 }
 
