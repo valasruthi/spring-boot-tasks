@@ -77,6 +77,7 @@ public class TrackRepositoryTest {
   }
   @Test
   public void givenIdShouldUpdateTrack(){
+     Track track = new Track(63, "chinni", "great");
     trackRepository.save(track);
     Track updateTrack=trackRepository.update(track);
     Assert.assertEquals(62,updateTrack.getId());
