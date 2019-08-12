@@ -16,6 +16,10 @@ public class GlobalException {
   public ResponseEntity<?> alreadyExistException(final TrackAlreadyExistsException e) {
     return new ResponseEntity<String>(e.getMessage(), HttpStatus.CONFLICT);
   }
+  @ExceptionHandler( HttpServerErrorException.InternalServerError.class)
+    public ResponseEntity<?>internalServrError(HttpServerErrorException.InternalServerError error){
+        return  new ResponseEntity<String>("internal server occured",HttpStatus.CREATED);
+    }
 
 
 }
