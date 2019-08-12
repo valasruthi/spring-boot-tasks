@@ -31,7 +31,7 @@ public class TrackController {
     ResponseEntity responseEntity;
     try {
       Track savedTrack = trackService.save(track);
-      return new ResponseEntity<>(savedTrack, HttpStatus.OK);
+      return new ResponseEntity<>(savedTrack, HttpStatus.isCreated);
     } catch (TrackAlreadyExistsException ex) {
       responseEntity = new ResponseEntity<String>(ex.getMessage(), HttpStatus.CONFLICT);
       return responseEntity;
@@ -44,7 +44,7 @@ public class TrackController {
     ResponseEntity responseEntity;
     try {
       Track trackDetails = trackService.getById(id);
-      return new ResponseEntity<>(trackDetails, HttpStatus.CREATED);
+      return new ResponseEntity<>(trackDetails, HttpStatus.OK);
     } catch (TrackNotFoundException exe) {
       responseEntity = new ResponseEntity(exe.getMessage(), HttpStatus.NOT_FOUND);
       exe.printStackTrace();
@@ -58,7 +58,7 @@ public class TrackController {
   public ResponseEntity<?> getAllTracks() throws Exception {
     ResponseEntity responseEntity;
     try {
-      responseEntity = new ResponseEntity<List<Track>>(trackService.getAllTracks(), HttpStatus.CREATED);
+      responseEntity = new ResponseEntity<List<Track>>(trackService.getAllTracks(), HttpStatus.OK);
     } catch (Exception e) {
       responseEntity = new ResponseEntity(e.getMessage(), HttpStatus.NOT_FOUND);
       e.printStackTrace();
@@ -72,7 +72,7 @@ public class TrackController {
     ResponseEntity responseEntity;
     try {
       Track tracksList = (Track) trackService.deleteTrackById(id);
-      return new ResponseEntity<>(tracksList, HttpStatus.OK);
+      return new ResponseEntity<>(tracksList, HttpStatus.isConflict);
     } catch (TrackNotFoundException ex) {
       responseEntity = new ResponseEntity(ex.getMessage(), HttpStatus.NOT_FOUND);
     }
@@ -85,7 +85,7 @@ public class TrackController {
     ResponseEntity responseEntity;
     try {
       Track trackUpdated = trackService.updateTrack(id,track);
-      responseEntity = new ResponseEntity<>(trackUpdated, HttpStatus.UPGRADE_REQUIRED);
+      responseEntity = new ResponseEntity<>(trackUpdated, HttpStatus.OK);
     } catch (TrackNotFoundException ex) {
       responseEntity = new ResponseEntity(ex.getMessage(), HttpStatus.NOT_FOUND);
       ex.printStackTrace();
