@@ -75,12 +75,11 @@ public class TrackRepositoryTest {
     Track deleteTrack=trackRepository.delete(track.getId());
     Assert.assertEquals(62,deleteTrack.getId());
   }
-  @Test
-  public void givenIdShouldUpdateTrack(){
-     Track track = new Track(63, "chinni", "great");
-    trackRepository.save(track);
-    Track updateTrack=trackRepository.update(track);
-    Assert.assertEquals(62,updateTrack.getId());
-    
+   @Test
+    public void gievnTrackShouldUpdateTrackById() {
+        Track t1 = new Track(1, "bahubali", "title track");
+        Track t2 = new Track(2, "rrr", "intro song");
+        trackRespository.save(t1);
+        trackRespository.save(t2);
   }
 }
